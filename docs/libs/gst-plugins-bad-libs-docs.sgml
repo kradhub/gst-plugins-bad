@@ -33,6 +33,7 @@
       <xi:include href="xml/gstmpeg4parser.xml" />
       <xi:include href="xml/gstvc1parser.xml" />
       <xi:include href="xml/gstmpegvideometa.xml" />
+      <xi:include href="xml/gstcavsvideoparser.xml" />
     </chapter>
 
     <chapter id="mpegts">

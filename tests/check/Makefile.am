@@ -260,6 +260,7 @@ check_PROGRAMS = \
 	elements/id3mux \
 	pipelines/mxf \
 	$(check_mimic) \
+	libs/cavsvideoparser \
 	libs/mpegvideoparser \
 	libs/mpegts \
 	libs/h264parser \
@@ -322,6 +323,15 @@ libs_mpegts_LDADD = \
 	$(top_builddir)/gst-libs/gst/mpegts/libgstmpegts-@GST_API_VERSION@.la \
 	$(GST_BASE_LIBS) \
 	$(GST_LIBS) $(LDADD)
+
+libs_cavsvideoparser_CFLAGS = \
+	$(GST_PLUGINS_BAD_CFLAGS) $(GST_PLUGINS_BASE_CFLAGS) \
+	-DGST_USE_UNSTABLE_API \
+	$(GST_BASE_CFLAGS) $(GST_CFLAGS) $(AM_CFLAGS)
+
+libs_cavsvideoparser_LDADD = \
+	$(top_builddir)/gst-libs/gst/codecparsers/libgstcodecparsers-@GST_API_VERSION@.la \
+	$(GST_BASE_LIBS) $(GST_LIBS) $(LDADD)
 
 libs_h264parser_CFLAGS = \
 	$(GST_PLUGINS_BAD_CFLAGS) $(GST_PLUGINS_BASE_CFLAGS) \

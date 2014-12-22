@@ -177,6 +177,37 @@ gst_mpeg4_parse_video_packet_header
 </SECTION>
 
 <SECTION>
+<FILE>gstcavsvideoparser</FILE>
+<TITLE>cavsvideoparser</TITLE>
+<INCLUDE>gst/codecparsers/gstcavsvideoparser.h</INCLUDE>
+GstCAVSVideoProfile
+GstCAVSVideoLevel
+GstCAVSVideoStartCode
+GstCAVSVideoUnitType
+GstCAVSVideoParserResult
+GstCAVSVideoChroma
+GstCAVSVideoPictureHeaderType
+GstCAVSVideoPictureType
+GstCAVSVideoExtensionDataType
+GstCAVSVideoFormat
+GstCAVSVideoSequenceHeader
+GstCAVSVideoSequenceDisplayExtension
+GstCAVSVideoCopyrightExtension
+GstCAVSVideoCameraParametersExtension
+GstCAVSVideoPictureDisplayExtension
+GstCAVSVideoExtensionData
+GstCAVSVideoPictureHeader
+GstCAVSVideoSliceHeader
+GstCAVSVideoUnit
+gst_cavs_video_parser_identify_unit
+gst_cavs_video_parser_parse_sequence_header
+gst_cavs_video_parser_parse_extension_data
+gst_cavs_video_parser_parse_i_picture
+gst_cavs_video_parser_parse_pb_picture
+gst_cavs_video_parser_parse_slice_header
+</SECTION>
+
+<SECTION>
 <FILE>gstmpegts</FILE>
 <SUBSECTION Common>
 gst_mpegts_initialize
