@@ -648,6 +648,13 @@ AC_ARG_ENABLE([dispmanx],
        *) AC_MSG_ERROR([bad value ${enableval} for --enable-dispmanx]) ;;
      esac],[NEED_DISPMANX=auto])
 
+AC_ARG_ENABLE([egl-without-win],
+    [  --enable-egl-without-win  Enable EGL support without windowing system (requires EGL)],
+    [ USE_EGL_WITHOUT_WIN=yes ], [USE_EGL_WITHOUT_WIN=no])
+if test "x$USE_EGL_WITHOUT_WIN" = "xyes"; then
+  AC_DEFINE(USE_EGL_WITHOUT_WIN, [1], [Use EGL without windowing system])
+fi
+
 AG_GST_PKG_CHECK_MODULES(X, x11)
 save_CPPFLAGS="$CPPFLAGS"
 save_LIBS="$LIBS"
@@ -960,7 +967,7 @@ case $host in
       fi
     else
       if test "x$NEED_EGL" != "xno"; then
-        if test "x$HAVE_WINDOW_WAYLAND" = "xyes" -o "x$HAVE_WINDOW_X11" = "xyes" -o "x$HAVE_WINDOW_DISPMANX" = "xyes"; then
+        if test "x$HAVE_WINDOW_WAYLAND" = "xyes" -o "x$HAVE_WINDOW_X11" = "xyes" -o "x$HAVE_WINDOW_DISPMANX" = "xyes" -o "x$USE_EGL_WITHOUT_WIN" = "xyes"; then
           GL_LIBS="$GL_LIBS -lEGL $EGL_LIBS"
           GL_CFLAGS="$GL_CFLAGS $EGL_CFLAGS"
           USE_EGL=yes
@@ -1137,6 +1144,9 @@ fi
 if test "x$HAVE_WINDOW_EAGL" = "xyes"; then
   GL_WINDOWS="eagl $GL_WINDOWS"
   GST_GL_HAVE_WINDOW_EAGL=1
+fi
+if test "x$USE_EGL_WITHOUT_WIN" = "xyes"; then
+  GL_WINDOWS="egl_no_win $GL_WINDOWS"
 fi
 
 GL_CONFIG_DEFINES="$GL_CONFIG_DEFINES
