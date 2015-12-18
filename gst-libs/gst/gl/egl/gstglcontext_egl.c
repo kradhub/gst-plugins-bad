@@ -181,7 +181,11 @@ gst_gl_context_egl_choose_config (GstGLContextEGL * egl,
   EGLint config_attrib[20];
 
   config_attrib[i++] = EGL_SURFACE_TYPE;
+#ifdef USE_EGL_WITHOUT_WIN
+  config_attrib[i++] = EGL_PBUFFER_BIT;
+#else
   config_attrib[i++] = EGL_WINDOW_BIT;
+#endif
   config_attrib[i++] = EGL_RENDERABLE_TYPE;
   if (egl->gl_api & GST_GL_API_GLES2)
     config_attrib[i++] = EGL_OPENGL_ES2_BIT;
