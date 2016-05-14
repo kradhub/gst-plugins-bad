@@ -295,7 +295,7 @@ avs_reader_get_se (CAVSReader * nr, gint32 * val)
 
 #define READ_INT32(r, val, nbits) { \
   guint32 tmp; \
-  guint shift = 16 - nbits; \
+  guint shift = 32 - nbits; \
   if (!avs_reader_get_bits_uint32 (r, &tmp, nbits)) { \
     GST_WARNING ("failed to read int32, nbits: %d", nbits); \
     goto error; \
